@@ -1,0 +1,35 @@
+#### Adding to Item doctype:
+ - Add to /srv/erpnext/frappe_docker/development/frappe-bench/apps/erpnext/erpnext/stock/doctype/item/item.json/item.json
+"fields": [  {
+   "collapsible": 1,
+   "fieldname": "item_rev_table_section",
+   "fieldtype": "Section Break",
+   "label": "Item Revision Table"
+  },
+  {
+   "fieldname": "item_rev_table",
+   "fieldtype": "Table",
+   "label": "Item Revision",
+   "options": "Item Revision"
+  }]
+
+in "field_order",   
+  "item_rev_table_section",
+  "item_rev_table",
+are inserted after "description"
+
+In /srv/erpnext/frappe_docker/development/frappe-bench/apps/erpnext/erpnext/stock/doctype/item/item.py:
+ - Add function "validate_current_rev()" to Item class definitions, call it in validate(self)
+    def validate_current_rev(self):
+        if len(self.item_rev_table)==0:
+            frappe.throw(_("Item must have one and only one current revision."))
+        else:
+            current_revs=0
+            for item_rev in self.item_rev_table:
+                if item_rev.item_rev_current_check:
+                    current_revs+=1
+            if current_revs!=1:
+                frappe.throw(_("Item must have one and only one current revision."))
+
+
+*** Note that the file originally used tabs instead of spaces for indentation. Had to convert to avoid inconsistency error
