@@ -44,6 +44,24 @@ class Item(WebsiteGenerator):
 		no_cache=1
 	)
 
+##################  Ability Engineering Customization  ##################
+	def validate_current_rev(self):
+		if len(self.item_rev_table)==0:
+			frappe.throw(_("Item must have one and only one current revision."))
+		else:
+			current_revs=0
+			item_rev_letters=[]
+			for item_rev in self.item_rev_table:
+				if item_rev.item_rev_current_check:
+					current_revs+=1
+				item_rev_letters.append(item_rev.item_rev)
+			if current_revs!=1:
+				frappe.throw(_("Item must have one and only one current revision."))
+			for letter in item_rev_letters:
+				if item_rev_letters.count(letter)>1:
+					frappe.throw(_("Duplicate revisions are not permitted."))
+#########################################################################
+
 	def onload(self):
 		super(Item, self).onload()
 
@@ -132,6 +150,7 @@ class Item(WebsiteGenerator):
 			self.old_website_item_groups = frappe.db.sql_list("""select item_group
 					from `tabWebsite Item Group`
 					where parentfield='website_item_groups' and parenttype='Item' and parent=%s""", self.name)
+		self.validate_current_rev()
 
 	def on_update(self):
 		invalidate_cache_for_item(self)
