@@ -15,6 +15,8 @@
   "item_code",
   "variant_of",
   "item_name",
+  "current_revision",
+  "curr_rel_status",
   "item_group",
   "is_item_from_hub",
   "stock_uom",
@@ -1063,6 +1065,18 @@
    "fieldtype": "Table",
    "label": "Item Revision",
    "options": "Item Revision"
+  },
+  {
+   "fieldname": "current_revision",
+   "fieldtype": "Data",
+   "label": "Current Revision",
+   "read_only": 1
+  },
+  {
+   "fieldname": "curr_rel_status",
+   "fieldtype": "Data",
+   "label": "Release Status",
+   "read_only": 1
   }
  ],
  "has_web_view": 1,
@@ -1070,7 +1084,7 @@
  "idx": 2,
  "image_field": "image",
  "max_attachments": 1,
- "modified": "2020-10-03 15:30:05.374214",
+ "modified": "2020-10-04 14:51:02.735716",
  "modified_by": "Administrator",
  "module": "Engineering",
  "name": "Item",
