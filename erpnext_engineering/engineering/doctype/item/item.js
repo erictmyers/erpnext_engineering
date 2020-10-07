@@ -25,6 +25,12 @@ frappe.ui.form.on("Item", {
 	},
 
 	refresh: function(frm) {
+		frm.add_custom_button(__("Item Information Report"), function() {
+			frappe.route_options = {
+				"item_code": frm.doc.name
+			}
+			frappe.set_route("query-report", "Item Information Report");
+		});
 		if (frm.doc.is_stock_item) {
 			frm.add_custom_button(__("Balance"), function() {
 				frappe.route_options = {
