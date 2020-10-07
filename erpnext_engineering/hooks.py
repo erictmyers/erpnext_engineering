@@ -8,7 +8,7 @@ app_publisher = "Ability Engineering"
 app_description = "App for adding item revisions and other engineering-related customizations to ERPNext."
 app_icon = "octicon octicon-file-directory"
 app_color = "grey"
-app_email = "eric.t.myers@gmail.com"
+app_email = "red@act.ed"
 app_license = "GNU General Public License v2"
 
 # Includes in <head>
