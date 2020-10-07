@@ -12,7 +12,7 @@ setup(
 	version=version,
 	description='App for adding item revisions and other engineering-related customizations to ERPNext.',
 	author='Ability Engineering',
-	author_email='eric.t.myers@gmail.com',
+	author_email='red@act.ed',
 	packages=find_packages(),
 	zip_safe=False,
 	include_package_data=True,
