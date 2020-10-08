@@ -1,0 +1,148 @@
+<br>
+<p align="center" style="line-height: 100%"><font face="Liberation Sans, sans-serif"><font size="4" style="font-size: 14pt">
+	<b>{%= __("Item Information Report") %}</b></font></font></p>
+
+<br><br>
+
+<table width="1000" cellpadding="0" cellspacing="0" style="background: transparent">
+	<colgroup>
+		<col width="83"/>
+
+	</colgroup>
+	<colgroup>
+		<col width="288"/>
+
+	</colgroup>
+	<colgroup>
+		<col width="30"/>
+
+		<col width="48"/>
+
+		<col width="66"/>
+
+		<col width="84"/>
+
+		<col width="103"/>
+
+	</colgroup>
+	<tbody>
+		<tr style="background: transparent">
+			<td width="70" height="24" bgcolor="#eeeeee" style="background: #eeeeee" style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding: 0in"><p>
+				<font face="Liberation Sans, sans-serif"><font size="2" style="font-size: 10pt"><span style="background: transparent">Item
+				ID:</span></font></font></p>
+			</td>
+			<td width="288" valign="top" style="border: 1px solid #000000; padding: 0in"><p>
+				<font face="Liberation Sans, sans-serif"><font size="2" style="font-size: 10pt">{%= filters.item_code %}</font></font></p>
+			</td>
+			<td width="30" valign="top" style="border: none; padding: 0in"><p><br/>
+
+				</p>
+			</td>
+			<td width="48" align="right" bgcolor="#eeeeee" style="background: #eeeeee" style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding: 0in"><p>
+				<font face="Liberation Sans, sans-serif"><font size="2" style="font-size: 10pt">Rev.</font></font></p>
+			</td>
+			<td width="66" valign="top" style="border: 1px solid #000000; padding: 0in"><p>
+				<font face="Liberation Sans, sans-serif"><font size="2" style="font-size: 10pt">{%= data[0]["current_revision"] %}</font></font></p>
+			</td>
+			<td width="84" align="right" bgcolor="#eeeeee" style="background: #eeeeee" style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding: 0in"><p>
+				<font face="Liberation Sans, sans-serif"><font size="2" style="font-size: 10pt">Status:</font></font></p>
+			</td>
+			<td width="103" valign="top" style="border: 1px solid #000000; padding: 0in"><p>
+				<font face="Liberation Sans, sans-serif"><font size="2" style="font-size: 10pt">{%= data[0]["curr_rel_status"] %}</font></font></p>
+			</td>
+		</tr>
+		<tr style="background: transparent">
+			<td rowspan="2" width="70" bgcolor="#eeeeee" style="background: #eeeeee" style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding: 0in"><p>
+				<font face="Liberation Sans, sans-serif"><font size="2" style="font-size: 10pt"><span style="background: transparent">Description:</span></font></font></p>
+			</td>
+			<td rowspan="2" width="288" valign="top" style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding: 0in"><p>
+				<font face="Liberation Sans, sans-serif"><font size="2" style="font-size: 10pt">{%= data[0]["item_name"] %}</font></font></p>
+			</td>
+			<td width="30" valign="top" style="border: none; padding: 0in"><p><br/>
+
+				</p>
+			</td>
+			<td width="48" align="right" bgcolor="#eeeeee" style="background: #eeeeee" style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding: 0in"><p>
+				<font face="Liberation Sans, sans-serif"><font size="2" style="font-size: 10pt">UOM:</font></font></p>
+			</td>
+			<td width="66" valign="top" style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding: 0in"><p>
+				<font face="Liberation Sans, sans-serif"><font size="2" style="font-size: 10pt">{%= data[0]["stock_uom"] %}</font></font></p>
+			</td>
+			<td width="84" align="right" bgcolor="#eeeeee" style="background: #eeeeee" style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding: 0in"><p>
+				<font face="Liberation Sans, sans-serif"><font size="2" style="font-size: 10pt">Purchased?</font></font></p>
+			</td>
+			<td width="103" valign="top" style="border-top: none; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; padding: 0in"><p>
+				<font face="Liberation Sans, sans-serif"><font size="2" style="font-size: 10pt">{%= data[0]["is_purchase_item"] %}</font></font></p>
+			</td>
+		</tr>
+		<tr style="background: transparent">
+			<td width="30" valign="top" style="border: none; padding: 0in"><p><br/>
+
+				</p>
+			</td>
+			<td width="48" valign="top" bgcolor="#ffffff" style="background: #ffffff" style="border: none; padding: 0in"><p>
+				<br/>
+
+				</p>
+			</td>
+			<td width="66" valign="top" bgcolor="#ffffff" style="background: #ffffff" style="border: none; padding: 0in"><p>
+				<br/>
+
+				</p>
+			</td>
+			<td width="84" valign="top" bgcolor="#ffffff" style="background: #ffffff" style="border: none; padding: 0in"><p>
+				<br/>
+
+				</p>
+			</td>
+			<td width="103" valign="top" bgcolor="#ffffff" style="background: #ffffff" style="border: none; padding: 0in"><p>
+				<br/>
+
+				</p>
+			</td>
+		</tr>
+	</tbody>
+	<tbody>
+		<tr style="background: transparent">
+			<td width="70" height="107" bgcolor="#eeeeee" style="background: #eeeeee" style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; padding: 0in"><p>
+				<font face="Liberation Sans, sans-serif"><font size="2" style="font-size: 10pt"><span style="background: transparent">Long
+				Text:</span></font></font></p>
+			</td>
+			<td colspan="6" width="619" valign="top" style="border: 1px solid #000000; padding: 0in"><p>
+				<font face="Liberation Sans, sans-serif"><font size="2" style="font-size: 10pt">{%= data[0]["description"] %}</font></font></p>
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+<br><br>
+
+<p align="left" style="line-height: 100%"><font face="Liberation Sans, sans-serif"><font size="4" style="font-size: 12pt">
+	<b>{%= __("Bill Of Materials") %}</b></font></font>
+</p>
+	<table class="table table-bordered">
+		<thead>
+			<tr>
+				<th style="width: 5%">{%= __("Balloon") %}</th>
+				<th style="width: 15%">{%= __("Item") %}</th>
+				<th style="width: 5%">{%= __("Revision") %}</th>
+				<th style="width: 35%">{%= __("Description") %}</th>
+				<th style="width: 5%">{%= __("Required Qty") %}</th>
+				<th style="width: 5%">{%= __("UOM") %}</th>
+				<th style="width: 10%">{%= __("Status") %}</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for(var i=1, l=data.length; i<l; i++) { %}
+			<tr>
+				<td>{%= data[i]["balloon"] %}</td>
+				<td>{%= data[i]["item_code"] %}</td>
+				<td>{%= data[i]["current_revision"] %} </td>
+				<td>{%= data[i]["item_name"] %} </td>
+				<td>{%= data[i]["qty"] %} </td>
+				<td>{%= data[i]["stock_uom"] %} </td>
+				<td>{%= data[i]["curr_rel_status"] %} </td>
+			</tr>
+			{% } %}
+		</tbody>
+	</table>

@@ -9,7 +9,7 @@ def execute(filters=None):
     
     item_code=filters.get("item_code")
     item_class="Parent item"
-    data=get_data(data,item_code,item_class,1)
+    data=get_data(data,item_code,item_class,1,"na")
     
     # frappe.get_all(doctype, filters, or_filters, fields, order_by, group_by, start, page_length)
     def_boms=frappe.get_all(
@@ -24,18 +24,19 @@ def execute(filters=None):
         def_bom_items=frappe.get_all(
             "BOM Item",
             filters={"parent":def_bom_id,},
-            fields=['item_code','qty']
+            fields=['item_code','qty','balloon'],
+            order_by='idx'
         )
         print("\n items in default BOM are: ")
         print(def_bom_items)
         for item in def_bom_items:
-            data=get_data(data,item.item_code,item_class,item.qty)
+            data=get_data(data,item.item_code,item_class,item.qty,item.balloon)
     else:
         print("No default BOM exists.")
     
     return columns, data
 
-def get_data(data,item_code,item_class,qty):
+def get_data(data,item_code,item_class,qty,balloon):
     item=frappe.get_all(
         "Item",
         filters={"name": item_code},
@@ -64,7 +65,8 @@ def get_data(data,item_code,item_class,qty):
             'qty':qty,
             'stock_uom':stock_uom,
             'description':description,
-            'is_purchase_item':is_purchase_item
+            'is_purchase_item':is_purchase_item,
+            'balloon':balloon
             }
     )
     
@@ -73,6 +75,12 @@ def get_data(data,item_code,item_class,qty):
 def get_columns():
     """return columns"""
     columns = [
+        {
+            "label":"Balloon",
+            "fieldtype":"data",
+            "fieldname":"balloon",
+            "width":75
+        },
         {
             "label":"Item Class",
             "fieldtype":"data",

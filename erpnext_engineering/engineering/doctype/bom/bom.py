@@ -163,8 +163,12 @@ class BOM(WebsiteGenerator):
  			 'conversion_factor': 1,
 			 'bom_no'		: args['bom_no'],
 			 'rate'			: rate,
-			 'qty'			: args.get("qty") or args.get("stock_qty") or 1,
-			 'stock_qty'	: args.get("qty") or args.get("stock_qty") or 1,
+### MODIFICATION TO ALLOW ZERO-QUANTITY BOM ITEMS ###
+#			 'qty'			: args.get("qty") or args.get("stock_qty") or 1,
+			 'qty'			: args.get("qty") or args.get("stock_qty") or 0,
+#			 'stock_qty'	: args.get("qty") or args.get("stock_qty") or 1,
+			 'stock_qty'	: args.get("qty") or args.get("stock_qty") or 0,
+######################################################
 			 'base_rate'	: flt(rate) * (flt(self.conversion_rate) or 1),
 			 'include_item_in_manufacturing': cint(args['transfer_for_manufacture']) or 0
 		}
@@ -202,7 +206,10 @@ class BOM(WebsiteGenerator):
 						args = frappe._dict({
 							"doctype": "BOM",
 							"price_list": self.buying_price_list,
-							"qty": arg.get("qty") or 1,
+### MODIFICATION TO ALLOW ZERO-QUANTITY BOM ITEMS ###
+                            "qty": arg.get("qty") or 0,
+#							"qty": arg.get("qty") or 1,
+#######################################################
 							"uom": arg.get("uom") or arg.get("stock_uom"),
 							"stock_uom": arg.get("stock_uom"),
 							"transaction_type": "buying",
@@ -344,8 +351,10 @@ class BOM(WebsiteGenerator):
 			self.uom = ret[1]
 			self.item_name= ret[2]
 
-		if not self.quantity:
-			frappe.throw(_("Quantity should be greater than 0"))
+### MODIFICATION TO ALLOW ZERO-QUANTITY BOM ITEMS ###
+#		if not self.quantity:
+#			frappe.throw(_("Quantity should be greater than 0"))
+#####################################################
 
 	def validate_currency(self):
 		if self.rm_cost_as_per == 'Price List':
@@ -394,8 +403,10 @@ class BOM(WebsiteGenerator):
 		for m in self.get('items'):
 			if m.bom_no:
 				validate_bom_no(m.item_code, m.bom_no)
-			if flt(m.qty) <= 0:
-				frappe.throw(_("Quantity required for Item {0} in row {1}").format(m.item_code, m.idx))
+### MODIFICATION TO ALLOW ZERO-QUANTITY BOM ITEMS ###
+#			if flt(m.qty) <= 0:
+#				frappe.throw(_("Quantity required for Item {0} in row {1}").format(m.item_code, m.idx))
+#####################################################
 			check_list.append(m)
 
 	def check_recursion(self, bom_list=[]):
